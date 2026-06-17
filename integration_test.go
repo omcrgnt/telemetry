@@ -1,0 +1,61 @@
+package telemetry_test
+
+import (
+	"context"
+	"testing"
+
+	commonv1 "github.com/omcrgnt/proto/gen/go/common/v1"
+	"github.com/omcrgnt/res"
+	"github.com/omcrgnt/sdi"
+	"github.com/omcrgnt/telemetry"
+	"go.opentelemetry.io/otel"
+)
+
+func setupUseDefaults(t *testing.T) {
+	t.Helper()
+	res.ResetDefault()
+	_ = res.AddWithTags(telemetry.DefaultTrace(), res.TagReplaceable)
+}
+
+func TestIntegration_resolveWithUseDefault(t *testing.T) {
+	setupUseDefaults(t)
+
+	if err := sdi.Resolve(res.Default); err != nil {
+		t.Fatal(err)
+	}
+
+	_, span := otel.Tracer("test").Start(context.Background(), "resolve-default")
+	defer span.End()
+
+	if !span.SpanContext().TraceID().IsValid() {
+		t.Fatal("expected valid trace id after resolve")
+	}
+}
+
+func TestIntegration_dedupUserOverride(t *testing.T) {
+	setupUseDefaults(t)
+
+	userRaw, err := (telemetry.Config{
+		ServiceName: &commonv1.Label{Value: "demo"},
+		Host:        &commonv1.Host{Value: "127.0.0.1"},
+		Port:        &commonv1.Port{Value: 4318},
+		Insecure:    true,
+	}).Build()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := res.Add(userRaw); err != nil { //nolint:forbidigo // simulates app builder wiring
+		t.Fatal(err)
+	}
+
+	if err := sdi.Resolve(res.Default); err != nil {
+		t.Fatal(err)
+	}
+
+	_, span := otel.Tracer("test").Start(context.Background(), "user-override")
+	defer span.End()
+
+	if !span.SpanContext().TraceID().IsValid() {
+		t.Fatal("expected valid trace id after user override resolve")
+	}
+}
