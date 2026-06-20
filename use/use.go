@@ -1,6 +1,6 @@
 // Package use registers telemetry system defaults in res.Default.
 //
-// Import for side effects at the app composition root (main or a meta use package):
+// Import for side effects at the app composition root:
 //
 //	import _ "github.com/omcrgnt/telemetry/use"
 package use
@@ -11,5 +11,5 @@ import (
 )
 
 func init() {
-	_ = res.AddWithTags(telemetry.DefaultTrace(), res.TagReplaceable)
+	_ = res.AddWithTags(telemetry.DefaultTraceConfig(), res.TagReplaceable)
 }

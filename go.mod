@@ -3,8 +3,9 @@ module github.com/omcrgnt/telemetry
 go 1.26.2
 
 require (
+	github.com/omcrgnt/builder v0.2.0
 	github.com/omcrgnt/proto/gen/go v0.3.0
-	github.com/omcrgnt/res v0.6.0
+	github.com/omcrgnt/res v0.9.0
 	github.com/omcrgnt/sdi v1.2.0
 	go.opentelemetry.io/otel v1.44.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.44.0
@@ -34,6 +35,7 @@ require (
 )
 
 replace (
+	github.com/omcrgnt/builder => /opt/github/builder
 	github.com/omcrgnt/proto/gen/go => /opt/github/proto/gen/go
 	github.com/omcrgnt/res => /opt/github/res
 	github.com/omcrgnt/sdi => /opt/github/sdi

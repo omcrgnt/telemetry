@@ -5,6 +5,7 @@ import (
 	"testing"
 
 	commonv1 "github.com/omcrgnt/proto/gen/go/common/v1"
+	"github.com/omcrgnt/builder"
 	"github.com/omcrgnt/res"
 	"github.com/omcrgnt/sdi"
 	"github.com/omcrgnt/telemetry"
@@ -14,7 +15,10 @@ import (
 func setupUseDefaults(t *testing.T) {
 	t.Helper()
 	res.ResetDefault()
-	_ = res.AddWithTags(telemetry.DefaultTrace(), res.TagReplaceable)
+	_ = res.AddWithTags(telemetry.DefaultTraceConfig(), res.TagReplaceable)
+	if err := builder.Build(res.Default); err != nil {
+		t.Fatal(err)
+	}
 }
 
 func TestIntegration_resolveWithUseDefault(t *testing.T) {
@@ -35,16 +39,15 @@ func TestIntegration_resolveWithUseDefault(t *testing.T) {
 func TestIntegration_dedupUserOverride(t *testing.T) {
 	setupUseDefaults(t)
 
-	userRaw, err := (telemetry.Config{
+	if err := res.Add(telemetry.Config{
 		ServiceName: &commonv1.Label{Value: "demo"},
 		Host:        &commonv1.Host{Value: "127.0.0.1"},
 		Port:        &commonv1.Port{Value: 4318},
 		Insecure:    true,
-	}).Build()
-	if err != nil {
+	}); err != nil { //nolint:forbidigo // simulates ecfg.Register
 		t.Fatal(err)
 	}
-	if err := res.Add(userRaw); err != nil { //nolint:forbidigo // simulates app builder wiring
+	if err := builder.Build(res.Default); err != nil {
 		t.Fatal(err)
 	}
 
