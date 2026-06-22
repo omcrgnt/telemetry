@@ -2,11 +2,16 @@ module github.com/omcrgnt/telemetry
 
 go 1.26.2
 
+retract (
+	[v1.0.0, v1.20.0]
+	[v0.1.0, v0.20.0]
+)
+
 require (
-	github.com/omcrgnt/builder v0.2.0
+	github.com/omcrgnt/builder v0.20.1
 	github.com/omcrgnt/proto/gen/go v0.3.0
-	github.com/omcrgnt/res v0.9.0
-	github.com/omcrgnt/sdi v1.2.0
+	github.com/omcrgnt/res v0.20.1
+	github.com/omcrgnt/sdi v0.20.1
 	go.opentelemetry.io/otel v1.44.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.44.0
 	go.opentelemetry.io/otel/sdk v1.44.0
@@ -25,9 +30,9 @@ require (
 	go.opentelemetry.io/otel/metric v1.44.0 // indirect
 	go.opentelemetry.io/otel/trace v1.44.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.10.0 // indirect
-	golang.org/x/net v0.55.0 // indirect
-	golang.org/x/sys v0.45.0 // indirect
-	golang.org/x/text v0.37.0 // indirect
+	golang.org/x/net v0.56.0 // indirect
+	golang.org/x/sys v0.46.0 // indirect
+	golang.org/x/text v0.38.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260526163538-3dc84a4a5aaa // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect
 	google.golang.org/grpc v1.81.1 // indirect
@@ -35,8 +40,7 @@ require (
 )
 
 replace (
-	github.com/omcrgnt/builder => /opt/github/builder
-	github.com/omcrgnt/proto/gen/go => /opt/github/proto/gen/go
-	github.com/omcrgnt/res => /opt/github/res
-	github.com/omcrgnt/sdi => /opt/github/sdi
+	github.com/omcrgnt/builder => ../builder
+	github.com/omcrgnt/res => ../res
+	github.com/omcrgnt/sdi => ../sdi
 )
