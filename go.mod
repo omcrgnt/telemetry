@@ -4,14 +4,15 @@ go 1.26.2
 
 retract (
 	[v1.0.0, v1.20.0]
+	v0.20.1 // broken imports (replace)
 	[v0.1.0, v0.20.0]
 )
 
 require (
-	github.com/omcrgnt/builder v0.20.1
+	github.com/omcrgnt/builder v0.20.2
 	github.com/omcrgnt/proto/gen/go v0.3.0
-	github.com/omcrgnt/res v0.20.1
-	github.com/omcrgnt/sdi v0.20.1
+	github.com/omcrgnt/res v0.20.2
+	github.com/omcrgnt/sdi v0.20.3
 	go.opentelemetry.io/otel v1.44.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.44.0
 	go.opentelemetry.io/otel/sdk v1.44.0
@@ -33,14 +34,8 @@ require (
 	golang.org/x/net v0.56.0 // indirect
 	golang.org/x/sys v0.46.0 // indirect
 	golang.org/x/text v0.38.0 // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20260526163538-3dc84a4a5aaa // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260526163538-3dc84a4a5aaa // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20260622175928-b703f567277d // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260622175928-b703f567277d // indirect
 	google.golang.org/grpc v1.81.1 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
-)
-
-replace (
-	github.com/omcrgnt/builder => ../builder
-	github.com/omcrgnt/res => ../res
-	github.com/omcrgnt/sdi => ../sdi
 )
