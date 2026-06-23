@@ -18,7 +18,7 @@ Hardcoded dev defaults: host localhost, port 4318, insecure TLS, service name ap
 
 [Config] uses [common.v1.Label], [common.v1.Host], and [common.v1.Port] for OTLP endpoint and service name.
 
-Pipeline: ecfg.Register(cfg, res.Default) → builder.Build(res.Default) → sdi.Resolve(res.Default).
+Pipeline: ecfg.Register(cfg, res.Global()) → builder.Build(res.Global()) → sdi.Resolve(res.Global()).
 Dedup removes the system default when user Telemetry is registered.
 
 # SDI and runner
