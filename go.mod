@@ -9,10 +9,8 @@ retract (
 )
 
 require (
-	github.com/omcrgnt/builder v0.20.2
 	github.com/omcrgnt/proto/gen/go v0.3.0
-	github.com/omcrgnt/res v0.20.2
-	github.com/omcrgnt/sdi v0.20.3
+	github.com/omcrgnt/res v0.21.1
 	go.opentelemetry.io/otel v1.44.0
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp v1.44.0
 	go.opentelemetry.io/otel/sdk v1.44.0
