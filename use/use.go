@@ -1,4 +1,4 @@
-// Package use registers telemetry system defaults in res.Global.
+// Package use registers telemetry system defaults in unique.Global.
 //
 // Import for side effects at the app composition root:
 //
@@ -6,10 +6,10 @@
 package use
 
 import (
-	"github.com/omcrgnt/res"
+	"github.com/omcrgnt/res/unique"
 	"github.com/omcrgnt/telemetry"
 )
 
 func init() {
-	_ = res.AddToGlobalWithTags(telemetry.DefaultTraceConfig(), res.TagReplaceable)
+	unique.MustAddReplaceable(telemetry.DefaultTrace())
 }

@@ -13,7 +13,7 @@ import (
 	semconv "go.opentelemetry.io/otel/semconv/v1.24.0"
 )
 
-// Provider configures the process TracerProvider and lives in res.
+// Provider configures the process TracerProvider.
 type Provider struct {
 	tp *sdktrace.TracerProvider
 }

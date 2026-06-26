@@ -13,7 +13,7 @@ type Config struct {
 	Insecure    bool            `ecfg:"INSECURE"`
 }
 
-// Build returns a Provider for res.Add and SDI.
+// Build returns a Provider resource for unique.Add.
 func (c Config) Build() (any, error) {
 	return newProvider(
 		c.Host.GetValue(),
