@@ -21,8 +21,8 @@ github.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0 h1:5VipnvEpbqr2gA2VbM+nYVbkIF2
 github.com/grpc-ecosystem/grpc-gateway/v2 v2.29.0/go.mod h1:Hyl3n6Twe1hvtd9XUXDec4pTvgMSEixRuQKPTMH2bNs=
 github.com/omcrgnt/proto/gen/go v0.3.0 h1:N9ouU9osJ4stmED6LnY2cCUJe21XBommhel5tSlZfjo=
 github.com/omcrgnt/proto/gen/go v0.3.0/go.mod h1:XylKqMXLSRptwAPtnGx/s+tEVZoEvvkGJov6BgtYdz4=
-github.com/omcrgnt/res v0.21.1 h1:myFlyi1CobXNsRlWwzHcMGf1Ho0Q/+ebKezrTiesED8=
-github.com/omcrgnt/res v0.21.1/go.mod h1:mYMNfATQOqfJ+jOBPY/eZoKWlnmfSggkQCmX5xkt2Fc=
+github.com/omcrgnt/res v0.22.0 h1:OCtaKOvcZq2johftmw6ZcfY9k5rmyfVOyHFeRTv0kOU=
+github.com/omcrgnt/res v0.22.0/go.mod h1:mYMNfATQOqfJ+jOBPY/eZoKWlnmfSggkQCmX5xkt2Fc=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/testify v1.11.1 h1:7s2iGBzp5EwR7/aIZr8ao5+dra3wiQyKjjFuvgVKu7U=
