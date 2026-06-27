@@ -23,9 +23,7 @@ func newTestProvider(t *testing.T) (*Provider, *tracetest.InMemoryExporter) {
 func setupUseDefaults(t *testing.T) *unique.Registry {
 	t.Helper()
 	u := unique.New()
-	if err := u.AddReplaceable(DefaultTrace()); err != nil {
-		t.Fatal(err)
-	}
+	u.MustAddReplaceable(DefaultTrace())
 	return u
 }
 
