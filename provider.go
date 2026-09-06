@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 
+	"github.com/omcrgnt/app"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
 	"go.opentelemetry.io/otel/propagation"
@@ -14,8 +15,22 @@ import (
 )
 
 // Provider configures the process TracerProvider.
+// Catalog field: *Provider (Configurable) — declare it explicitly (e.g.
+// `Telemetry *telemetry.Provider `ecfg:"TELEMETRY"`` in _appResources) to
+// override the system default that telemetry/use registers via
+// unique.MustAddReplaceable; the normal fill/LoadEnv/materialize/merge
+// pipeline then replaces that Replaceable entry with one built from real
+// env vars (see res/unique's Add/Merge: TagRegular replaces TagReplaceable).
+// Without a catalog field, only the hardcoded default (see DefaultTrace)
+// exists — see doc.go's manual-override path for the pre-existing
+// alternative when a Configurable catalog field isn't a fit.
 type Provider struct {
 	tp *sdktrace.TracerProvider
+}
+
+// BuildConfig returns the config spec for materialize.
+func (*Provider) BuildConfig() (app.Materializer, error) {
+	return &Config{}, nil
 }
 
 func (p *Provider) Deps() []any {

@@ -1,0 +1,21 @@
+# Jaeger (all-in-one, OTLP-enabled) fragment for local app / system tests.
+# Consumers: include or extends from this file.
+#
+#   docker compose -f docker/service/jaeger.yml up -d
+#   include:
+#     - path: https://github.com/omcrgnt/telemetry.git#main:docker/service/jaeger.yml
+#
+# A consuming service still needs its own *telemetry.Provider catalog field
+# (ecfg-tagged) pointed at this service's name — the hardcoded
+# telemetry/use default targets "localhost", which inside a container is
+# never this service. See telemetry's provider.go doc comment.
+
+services:
+  jaeger:
+    image: jaegertracing/all-in-one:1.76.0
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - "${JAEGER_UI_PORT:-16686}:16686" # UI
+      - "${JAEGER_OTLP_GRPC_PORT:-4317}:4317" # OTLP gRPC
+      - "${JAEGER_OTLP_HTTP_PORT:-4318}:4318" # OTLP HTTP

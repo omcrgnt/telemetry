@@ -61,6 +61,16 @@ func TestProvider_InjectRecordsSpan(t *testing.T) {
 	}
 }
 
+func TestProvider_BuildConfig(t *testing.T) {
+	spec, err := (&Provider{}).BuildConfig()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, ok := spec.(*Config); !ok {
+		t.Fatalf("got %T, want *Config", spec)
+	}
+}
+
 func TestConfig_Build(t *testing.T) {
 	raw, err := (Config{
 		ServiceName: &commonv1.Label{Value: "demo"},
